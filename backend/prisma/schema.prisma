@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Campaign {
+  id                  String     @id @default(uuid())
+  subject             String
+  body                String     @db.Text
+  senderIdentity      String
+  startTime           DateTime
+  delayBetweenEmails  Int
+  maxEmailsPerHour    Int?
+  createdAt           DateTime   @default(now())
+  
+  emailJobs           EmailJob[]
+}
+
+enum JobStatus {
+  PENDING
+  QUEUED
+  PROCESSING
+  SENT
+  FAILED
+}
+
+model EmailJob {
+  id             String    @id @default(uuid())
+  campaignId     String
+  recipientEmail String
+  scheduledAt    DateTime
+  sentAt         DateTime?
+  status         JobStatus @default(PENDING)
+  bullMqJobId    String?   @unique
+  failureReason  String?   @db.Text
+
+  campaign       Campaign  @relation(fields: [campaignId], references: [id])
+
+  @@index([status])
+  @@index([scheduledAt])
+}

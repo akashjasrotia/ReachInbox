@@ -1,0 +1,17 @@
+{
+  "name": "email-job-scheduler",
+  "version": "1.0.0",
+  "description": "Full-stack Email Job Scheduler",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "start": "concurrently \"npm run start --workspace=backend\" \"npm run start --workspace=frontend\"",
+    "dev": "concurrently \"npm run dev --workspace=backend\" \"npm run dev --workspace=frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.4"
+  }
+}
