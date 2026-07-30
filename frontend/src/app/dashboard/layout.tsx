@@ -32,17 +32,25 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              <Mail className="h-8 w-8 text-indigo-600 mr-2" />
-              <span className="font-semibold text-xl text-gray-900 tracking-tight">EmailJobber</span>
+              <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-2 rounded-lg mr-3 shadow-md">
+                <Mail className="h-6 w-6 text-white" />
+              </div>
+              <span className="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 tracking-tight">
+                ReachInbox
+              </span>
             </div>
             <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2">
-                {session.user?.image && (
-                  <img src={session.user.image} alt="Avatar" className="h-8 w-8 rounded-full border border-gray-200" />
+              <div className="flex items-center space-x-3 bg-white border border-gray-200 rounded-full py-1.5 px-2 shadow-sm transition-all hover:shadow-md">
+                {session.user?.image ? (
+                  <img src={session.user.image} alt="Avatar" className="h-8 w-8 rounded-full ring-2 ring-indigo-100 object-cover" />
+                ) : (
+                  <div className="h-8 w-8 rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center text-indigo-700 font-bold border border-indigo-200">
+                    {session.user?.name?.charAt(0) || 'U'}
+                  </div>
                 )}
-                <div className="hidden sm:block text-sm">
-                  <p className="font-medium text-gray-900 leading-none">{session.user?.name}</p>
-                  <p className="text-gray-500 text-xs mt-1">{session.user?.email}</p>
+                <div className="hidden sm:block text-sm pr-2">
+                  <p className="font-semibold text-gray-900 leading-none">{session.user?.name}</p>
+                  <p className="text-gray-500 text-[11px] mt-1 truncate max-w-[120px]">{session.user?.email}</p>
                 </div>
               </div>
               <button

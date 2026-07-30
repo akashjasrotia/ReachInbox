@@ -27,12 +27,12 @@ export default function Home() {
     <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
-          <div className="rounded-full bg-indigo-100 p-3">
-            <Mail className="h-10 w-10 text-indigo-600" aria-hidden="true" />
+          <div className="rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 p-4 shadow-lg shadow-indigo-200">
+            <Mail className="h-12 w-12 text-white" aria-hidden="true" />
           </div>
         </div>
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Email Job Scheduler
+        <h2 className="mt-6 text-center text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 tracking-tight">
+          ReachInbox
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           Schedule, track, and manage your email campaigns.
